@@ -1,0 +1,11 @@
+{% if question %}
+  <p>{{ question.question_text }}</p>
+{% endif %}
+
+<form action="{% url 'polls:choice_create' question.id %}" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+    {{ field }}
+  {% endfor %}
+  <button name="save">Save</button>
+</form>
